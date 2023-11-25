@@ -1,0 +1,33 @@
+To Copy the value 55H into RAM Memory locations from 40H to 45H 
+
+MOV A,#55H ;A=55H 
+MOV R0,#40H ;load pointer.R0=40H, 
+MOV R2,#06 ;load counter, R2=02 
+AGAIN: MOV @R0,A ;copy 55 to RAM location pointed by R0 
+INC R0 ;increment R0 
+DJNZ R2,AGAIN ;loop until counter = zero
+
+
+
+To Transfer the data stored in ROM to Register
+
+
+
+ORG 0000H ;burn into ROM starting at 0
+MOV DPTR,#20H ;DPTR=20H look-up table addr
+CLR A ;clear A (A=0)
+MOVC A,@A+DPTR ;get the char from code space
+MOV R0,A ;save it in R0
+INC DPTR ;DPTR=21H point to next char
+CLR A ;clear A (A=0)
+MOVC A,@A+DPTR ;get the next char
+MOV R1,A ;save it in R1
+INC DPTR ;DPTR=22H point to next char
+CLR A ;clear A (A=0)
+MOVC A,@A+DPTR ;get the next char
+MOV R2,A ;save it in R2
+HERE :SJMP HERE ;stay HEREe
+;Data is burned into code space starting at 20H
+ORG 20H
+MYDATA:DB "ABC"
+END ;end of program 
