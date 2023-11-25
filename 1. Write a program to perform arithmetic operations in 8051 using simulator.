@@ -1,0 +1,26 @@
+ORG 0x00    ; Origin, start of program memory
+
+; Addition
+MOV A, #25  ; Load value 25 into accumulator A
+MOV B, #15  ; Load value 15 into register B
+ADD A, B    ; Add the values in A and B, result in A
+
+; Subtraction
+MOV A, #40  ; Load value 40 into accumulator A
+MOV B, #20  ; Load value 20 into register B
+SUBB A, B   ; Subtract the value in B from A, result in A
+
+; Multiplication
+MOV A, #5   ; Load value 5 into accumulator A
+MOV B, #8   ; Load value 8 into register B
+MOV R2, A   ; Move value from A to R2
+MOV A, #0   ; Clear accumulator A before multiplication
+MUL AB      ; Multiply A and B, result in A:B
+
+; Division
+MOV A, #32  ; Load value 32 into accumulator A
+MOV B, #4   ; Load value 4 into register B
+DIV AB      ; Divide A:B by B, quotient in A, remainder in B
+
+; End of program
+END
