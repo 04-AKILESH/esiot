@@ -1,1 +1,17 @@
-1. Write a program to perform arithmetic operations in 8051 using simulator. 
+ORG 0x00    ; Origin, start of program memory
+
+; Load data into register A
+MOV A, #25  ; Load value 25 into accumulator A
+
+; Transfer data from register A to register B
+MOV B, A    ; Move the contents of A to B
+
+SWAP A
+
+MOV R0, #15
+
+PUSH 02
+
+PUSH 06
+; End of program
+END
